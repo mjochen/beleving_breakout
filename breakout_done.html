@@ -15,6 +15,7 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
     // the link to your model provided by Teachable Machine export panel
+    // const URL = "https://teachablemachine.withgoogle.com/models/pn0bQJmt1/";
     const URL = " JOUW MODEL HIER! ";
     let model, webcam, ctx, labelContainer, maxPredictions;
 
@@ -60,15 +61,12 @@
         const prediction = await model.predict(posenetOutput);
 
         for (let i = 0; i < maxPredictions; i++) {
-            // const classPrediction =
-            //    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            // labelContainer.childNodes[i].innerHTML = classPrediction;
+            const classPrediction =
+               prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
 
-            if(prediction[i].probability>0.8)
-            {
-                labelContainer.childNodes[0].innerHTML = prediction[i].className;
+            if(prediction[i].probability>0.8) {
                 move_with_ai(prediction[i].className);
-
             }
             
         }
