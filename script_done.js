@@ -32,13 +32,14 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 
+// Toegevoegd: de functie die wordt aangeroepen door het AI model
 function move_with_ai(key)
 {
-    if(key == "right") {
+    if(key == "rechts") {
       leftPressed = false;  
       rightPressed = true;
     }
-    else if(key == "left") {
+    else if(key == "links") {
         rightPressed = false;
         leftPressed = true;
     }

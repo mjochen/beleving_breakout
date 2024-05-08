@@ -1,13 +1,15 @@
+<!-- Teachable machine -->
 <div>Teachable Machine Pose Model</div>
 <button type="button" onclick="init()">Start</button>
 <div><canvas id="canvas"></canvas></div>
+<div id="label-container"></div>
 
+<!-- Breakout -->
+<script async src="script_done.js"></script>
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 
-<div id="label-container"></div>
-
-<script src="script_done.js"></script>
+<!-- Teachable machine again -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 <script type="text/javascript">
@@ -15,8 +17,8 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
     // the link to your model provided by Teachable Machine export panel
-    // const URL = "https://teachablemachine.withgoogle.com/models/pn0bQJmt1/";
-    const URL = " JOUW MODEL HIER! ";
+    const URL = "https://teachablemachine.withgoogle.com/models/X_fP7lm88/";
+    // const URL = " JOUW MODEL HIER! "; -> werkt alleen met een POSE-model, voor een model met geluid of afbeeldingen moet de rest van de code ook een beetje anders
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     async function init() {
@@ -62,13 +64,13 @@
 
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
-               prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction;
 
+            // Toegevoegd: code om te bewegen met AI, refereert naar een functie in het break-out script
             if(prediction[i].probability>0.8) {
                 move_with_ai(prediction[i].className);
             }
-            
         }
 
         // finally draw the poses
@@ -86,6 +88,4 @@
             }
         }
     }
-
 </script>
-
