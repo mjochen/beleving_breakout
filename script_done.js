@@ -35,15 +35,16 @@ document.addEventListener("mousemove", mouseMoveHandler, false);
 // Toegevoegd: de functie die wordt aangeroepen door het AI model
 function move_with_ai(key)
 {
-    if(key == "rechts") {
-      leftPressed = false;  
-      rightPressed = true;
-    }
-    else if(key == "links") {
+    
+    if(key == "Links") {
         rightPressed = false;
         leftPressed = true;
     }
-    else if(key == "stop") {
+    else if(key == "Rechts") {
+      leftPressed = false;  
+      rightPressed = true;
+    }
+    else if(key == "Stop") {
       rightPressed = false;
       leftPressed = false;
   }
